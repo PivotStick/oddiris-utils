@@ -9,7 +9,8 @@
 	"exports": {
 		"./package.json": "./package.json",
 		"./functions": {
-			"require": "./functions/index.js"
+			"require": "./functions/index.js",
+			"import": "./functions/index.mjs"
 		}
 	}
 }
