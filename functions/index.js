@@ -1,3 +1,3 @@
 module.exports = {
-	phoneticize: require('./phoneticize')
+	phoneticize: require('./phoneticize').phoneticize
 };

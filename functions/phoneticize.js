@@ -89,4 +89,4 @@ function phoneticize(str) {
 		.replace(/\s+/g, '');
 }
 
-module.exports = phoneticize;
+exports.phoneticize = phoneticize;
