@@ -1,0 +1,9 @@
+{
+  "name": "oddiris-utils",
+  "version": "1.0.0",
+  "description": "Utilities functions",
+  "main": "index.js",
+  "repository": "git@github.com:PivotStick/oddiris-utils.git",
+  "author": "PivotStick <pivoorigami@gmail.com>",
+  "license": "MIT"
+}
