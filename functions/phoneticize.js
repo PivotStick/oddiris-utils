@@ -1,19 +1,19 @@
 /*
-Author : Jean-François VIAL <http://about.me/Jeff_>
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, either version 3 of the License, or
-(at your option) any later version
+  Copyright 2012 Jean-François Vial <https://about.me/jeff_>
+  Copyright 2022 Maxime Di Natale <pivoorigami@gmail.com>
 
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
+  Licensed under the Apache License, Version 2.0 (the "License");
 
-You should have received a copy of the GNU General Public License
-along with this program.  If not, see <http://www.gnu.org/licenses/>
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
 
-Fork it on GitHub ! https://github.com/Modulaweb/Phonetic-comparison-tool-for-french
+    http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
 */
 
 /**
@@ -36,16 +36,19 @@ function unduplicateLetters(str) {
 }
 
 /**
+ * Creates a french phonetic string allowing to guess that `sottereleu` _(misspelled)_ is similar to `sauterelle` _(correctly spelled)_
+ *
+ * 1. clean the string making all chars only letters, numbers and spaces
+ * 2. remove duplicate letters
+ * 3. replace some similar phonems by an univoque one
+ *
+ * Factorizing the words that way allow to compare 2 words and find if they sounds the same or not.
+ * it is more accurate than any soundex functions since it not based on differences of raw words
+ * it is more faster and less greedy
+ *
  * @param {string} str
  */
 function phoneticize(str) {
-	// creates a french phonetic string allowing to guess that "sottereleu" (misspelled) is similar to "sauterelle" (correctly spelled)
-	// 1) clean the string making all chars only letters, numbers and spaces
-	// 2) remove duplicate letters
-	// 3) replace some similar phonems by an univoque one
-	// factorizing the words that way allow to compare 2 words and find if they sounds the same or not.
-	// it is more accurate than any soundex functions since it not based on differences of raw words
-	// it is more faster and less greedy
 	return unduplicateLetters(cleanStr(str))
 		.replace('th', 't')
 		.replace('ph', 'f')
@@ -86,4 +89,4 @@ function phoneticize(str) {
 		.replace(/\s+/g, '');
 }
 
-exports.default = phoneticize;
+module.exports = phoneticize;
